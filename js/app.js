@@ -1,7 +1,1 @@
-const dashboard=document.getElementById("dashboard");
-
-dashboard.innerHTML=`
-
-<h2>Loading Portfolio...</h2>
-
-`;
+const mf=mfFile,st=stockFile,status=document.getElementById('status');loadBtn.onclick=()=>{if(!mf.files.length||!st.files.length){status.innerHTML='<h2>Select both CSV files.</h2>';return;}Promise.all([p(mf.files[0]),p(st.files[0])]).then(([m,s])=>{status.innerHTML=`<h2>Atlas Connected ✅</h2><div class='stat'>Mutual Fund Transactions: <b>${m.length}</b></div><div class='stat'>Stock Transactions: <b>${s.length}</b></div><div class='stat'>Total Transactions: <b>${m.length+s.length}</b></div>`;});};function p(f){return new Promise((res,rej)=>Papa.parse(f,{header:true,skipEmptyLines:true,complete:r=>res(r.data),error:rej}));}
